@@ -12,7 +12,7 @@ class APIManager {
     
     var url = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=0532857d0c9949ab8d5979e5153377b7"
     
-    func fetchTopNews(completion: @escaping ([Article])->()) {
+    func fetchNews(completion: @escaping ([Article])->()) {
         AF.request(url).response { response in
             guard let data = response.data else {return}
             
@@ -26,6 +26,30 @@ class APIManager {
             } catch {
                 print(error)
             }
+        }
+    }
+    
+    func fetchCurrentCategory(id: Int) {
+        switch id {
+            
+        case 1:
+            url = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=0532857d0c9949ab8d5979e5153377b7"
+            
+        case 2:
+            url = "https://newsapi.org/v2/top-headlines?country=ru&category=technology&apiKey=0532857d0c9949ab8d5979e5153377b7"
+            
+        case 3:
+            url = "https://newsapi.org/v2/top-headlines?country=ru&category=sport&apiKey=0532857d0c9949ab8d5979e5153377b7"
+            
+        case 4:
+            url = "https://newsapi.org/v2/top-headlines?country=ru&category=business&apiKey=0532857d0c9949ab8d5979e5153377b7"
+            
+        case 5:
+            url = "https://newsapi.org/v2/top-headlines?country=ru&category=entertainment&apiKey=0532857d0c9949ab8d5979e5153377b7"
+            
+        default:
+            break
+            
         }
     }
 }

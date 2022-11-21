@@ -9,6 +9,6 @@ import Foundation
 
 protocol TopNewsView: class {
     var presenter: TopNewsPresenter? { get set }
-    func displayTopNews(news: [TopNewsViewModel])
+    func displayTopNews(news: [NewsViewModel])
 }
 

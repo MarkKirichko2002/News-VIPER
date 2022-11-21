@@ -11,7 +11,7 @@ import UIKit
 class BreakingNewsView: UIViewController {
     
     var presenter: TopNewsPresenter?
-    var news = [TopNewsViewModel]()
+    var news = [NewsViewModel]()
     var tableView = UITableView()
     var spinner = UIActivityIndicatorView(style: .large)
     
@@ -19,7 +19,6 @@ class BreakingNewsView: UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.title = "Главное"
         self.tabBarItem.image = UIImage(systemName: "flame")
-        UITabBar.appearance().tintColor = .black
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,7 +32,7 @@ class BreakingNewsView: UIViewController {
         tableView.frame = view.bounds
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(BreakingNewsTableViewCell.self, forCellReuseIdentifier: BreakingNewsTableViewCell.identifier)
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
         tableView.rowHeight = 100
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
@@ -45,11 +44,11 @@ class BreakingNewsView: UIViewController {
 
 extension BreakingNewsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news.count / 2
+        return news.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BreakingNewsTableViewCell.identifier, for: indexPath) as! BreakingNewsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as! NewsTableViewCell
         cell.configure(news: news[indexPath.row])
         return cell
     }
@@ -58,7 +57,7 @@ extension BreakingNewsView: UITableViewDelegate, UITableViewDataSource {
 
 extension BreakingNewsView: TopNewsView {
     
-    func displayTopNews(news: [TopNewsViewModel]) {
+    func displayTopNews(news: [NewsViewModel]) {
         DispatchQueue.main.async {
             self.news = news
             self.tableView.reloadData()

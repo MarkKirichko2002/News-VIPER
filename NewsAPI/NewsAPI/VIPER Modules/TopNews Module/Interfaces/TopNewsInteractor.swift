@@ -8,7 +8,6 @@
 import Foundation
 
 protocol TopNewsInteractor {
-    
     var presenter: TopNewsPresenter? { get set }
     func GetTopNews()
 }
