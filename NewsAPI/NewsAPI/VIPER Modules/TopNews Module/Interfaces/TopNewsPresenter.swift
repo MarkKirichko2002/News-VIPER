@@ -7,11 +7,9 @@
 
 import Foundation
 
-protocol TopNewsPresenter: class {
-    
+protocol TopNewsPresenter: AnyObject {
     var router: TopNewsRouter? { get set }
     var interactor: TopNewsInteractor? { get set }
     var view: TopNewsView? { get set }
     func interactorDidFetchedTopNews(news: [Article])
-    
 }

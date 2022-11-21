@@ -8,9 +8,11 @@
 import Foundation
 
 class NewsCategoriesInteractor {
-    var presenter: CategoriesPresenter? 
+    
+    weak var presenter: CategoriesPresenter?
+    
 }
 
 extension NewsCategoriesInteractor: CategoriesInteractor {
-
+    
 }

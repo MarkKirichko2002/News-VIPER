@@ -11,10 +11,8 @@ import UIKit
 class NewsCategoriesTableViewController: UIViewController {
     
     var tableView = UITableView()
-    
     var presenter: CategoriesPresenter?
-    
-    var categories = [NewsCategory(id: 1, name: "главное"), NewsCategory(id: 2, name: "технологии"),NewsCategory(id: 3, name: "спорт"), NewsCategory(id: 5, name: "бизнес"), NewsCategory(id: 6, name: "развлечения")]
+    var categories = [NewsCategory(id: 1, name: "главное"),NewsCategory(id: 2, name: "технологии"),NewsCategory(id: 3, name: "спорт"),NewsCategory(id: 4, name: "бизнес"), NewsCategory(id: 5, name: "развлечения")]
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -50,5 +48,10 @@ extension NewsCategoriesTableViewController: UITableViewDelegate, UITableViewDat
 }
 
 extension NewsCategoriesTableViewController: CategoriesView {
-    
+    func displayCategories(categories: [NewsCategory]) {
+        DispatchQueue.main.async {
+            self.categories = categories
+            self.tableView.reloadData()
+        }
+    }
 }

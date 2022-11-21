@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TopNewsView: class {
+protocol TopNewsView: AnyObject {
     var presenter: TopNewsPresenter? { get set }
     func displayTopNews(news: [NewsViewModel])
 }
