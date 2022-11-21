@@ -12,6 +12,10 @@ class HomeDefaultView: UITabBarController {
     
     var presenter: HomePresenter?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        UITabBar.appearance().tintColor = .black
+    }
 }
 
 extension HomeDefaultView: HomeView {

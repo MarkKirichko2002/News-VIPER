@@ -1,5 +1,5 @@
 //
-//  BreakingNewsTableViewCell.swift
+//  NewsTableViewCell.swift
 //  NewsAPI
 //
 //  Created by Марк Киричко on 20.11.2022.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class BreakingNewsTableViewCell: UITableViewCell {
+class NewsTableViewCell: UITableViewCell {
     
-    static let identifier = "BreakingNewsTableViewCell"
+    static let identifier = "NewsTableViewCell"
     
     var ArticleImage = UIImageView()
     let ArticleTitle: UILabel = {
@@ -48,7 +48,7 @@ class BreakingNewsTableViewCell: UITableViewCell {
         ArticleTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
     }
     
-    func configure(news: TopNewsViewModel) {
+    func configure(news: NewsViewModel) {
         ArticleTitle.text = news.title
         ArticleImage.load(urlString: news.image)
     }

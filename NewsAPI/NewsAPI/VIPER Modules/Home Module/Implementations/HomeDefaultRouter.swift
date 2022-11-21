@@ -15,6 +15,6 @@ class HomeDefaultRouter {
 
 extension HomeDefaultRouter: HomeRouter {
     func getViewControllers()-> [UIViewController] {
-        return [TopNewsModule().buildDefault()].map { UINavigationController(rootViewController: $0) }
+        return [TopNewsModule().buildDefault(), NewsCategoriesModule().buildDefault()].map { UINavigationController(rootViewController: $0) }
     }
 }

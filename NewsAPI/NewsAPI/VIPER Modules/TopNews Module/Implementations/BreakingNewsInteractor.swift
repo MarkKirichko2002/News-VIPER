@@ -17,7 +17,7 @@ class BreakingNewsInteractor {
 extension BreakingNewsInteractor: TopNewsInteractor {
     
     func GetTopNews() {
-        apiManager.fetchTopNews { news in
+        apiManager.fetchNews { news in
             self.presenter?.interactorDidFetchedTopNews(news: news)
         }
     }

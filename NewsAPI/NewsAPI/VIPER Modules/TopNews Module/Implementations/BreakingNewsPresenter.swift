@@ -20,9 +20,9 @@ class BreakingNewsPresenter: TopNewsPresenter {
     }
     
     func interactorDidFetchedTopNews(news: [Article]) {
-        var newsArray = [TopNewsViewModel]()
+        var newsArray = [NewsViewModel]()
             news.forEach { article in
-                newsArray.append(TopNewsViewModel(title: article.title, description: article.articleDescription ?? "", image: article.urlToImage ?? ""))
+                newsArray.append(NewsViewModel(title: article.title, description: article.articleDescription ?? "", image: article.urlToImage ?? ""))
             view?.displayTopNews(news: newsArray)
         }
     }
