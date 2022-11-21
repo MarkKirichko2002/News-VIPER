@@ -16,7 +16,7 @@ class SearchNewsViewController: UIViewController, UISearchControllerDelegate {
     var tableView = UITableView()
     var spinner = UIActivityIndicatorView(style: .large)
     lazy var searchBar:UISearchBar = UISearchBar()
-   
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         self.title = "Поиск"
@@ -34,6 +34,8 @@ class SearchNewsViewController: UIViewController, UISearchControllerDelegate {
         searchBar.placeholder = "Поиск..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
+        searchBar.showsCancelButton = true
+        self.tableView.keyboardDismissMode = .onDrag
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
         navigationItem.titleView = searchBar
@@ -94,5 +96,11 @@ extension SearchNewsViewController: UISearchBarDelegate {
         }
         
         self.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
+    {
+        self.searchBar.endEditing(true)
+        
     }
 }
