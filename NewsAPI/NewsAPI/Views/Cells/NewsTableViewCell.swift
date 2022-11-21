@@ -50,27 +50,15 @@ class NewsTableViewCell: UITableViewCell {
     
     func configure(news: NewsViewModel) {
         ArticleTitle.text = news.title
-        ArticleImage.load(urlString: news.image)
+        DispatchQueue.main.async {
+            ImageService.getImage(withURL: (URL(string: news.image) ?? URL(string: "https://i.pinimg.com/originals/8a/eb/d8/8aebd875fbddd22bf3971c3a7159bdc7.png"))!, completion: { image in
+                self.ArticleImage.image = nil
+                self.ArticleImage.image = image
+            })
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-}
-
-extension UIImageView {
-    func load(urlString : String) {
-        guard let url = URL(string: urlString)else {
-            return
-        }
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
     }
 }
