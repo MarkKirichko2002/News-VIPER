@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol HomeView: class {
+protocol HomeView: AnyObject {
     var presenter: HomePresenter? {get set}
     func display(_ viewControllers: [UIViewController])
 }

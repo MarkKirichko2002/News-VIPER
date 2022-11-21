@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol HomePresenter: class {
+protocol HomePresenter: AnyObject {
     
     var router: HomeRouter? {get set}
     var interactor: HomeInteractor? {get set}

@@ -1,0 +1,45 @@
+//
+//  ImageService.swift
+//  NewsAPI
+//
+//  Created by Марк Киричко on 21.11.2022.
+//
+
+import UIKit
+
+class ImageService {
+
+    static let cache = NSCache<NSString, UIImage>()
+
+    static func downloadImage(withURL url:URL, completion: @escaping (_ image:UIImage?)->()) {
+        let dataTask = URLSession.shared.dataTask(with: url) { data, responseURL, error in
+            var downloadedImage: UIImage?
+
+            downloadedImage = nil
+
+            if let data = data {
+                downloadedImage = UIImage(data: data)
+            }
+
+            if downloadedImage != nil {
+                cache.setObject(downloadedImage!, forKey: url.absoluteString as NSString)
+            }
+
+            DispatchQueue.main.async {
+                completion(downloadedImage)
+            }
+        }
+
+        dataTask.resume()
+    }
+    
+    static func getImage(withURL url:URL, completion: @escaping (_ image:UIImage?)->()) {
+           if let image = cache.object(forKey: url.absoluteString as NSString) {
+               DispatchQueue.main.async {
+                   completion(image)
+               }
+           } else {
+               downloadImage(withURL: url, completion: completion)
+           }
+       }
+   }

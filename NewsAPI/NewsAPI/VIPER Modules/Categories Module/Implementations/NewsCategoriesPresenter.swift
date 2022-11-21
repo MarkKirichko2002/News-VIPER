@@ -8,13 +8,17 @@
 import Foundation
 
 class NewsCategoriesPresenter {
-    var view: CategoriesView?
-       
-    var interactor: CategoriesInteractor?
     
     var router: CategoriesRouter?
+    
+    var view: CategoriesView?
+       
+    var interactor: CategoriesInteractor? 
 }
 
 extension NewsCategoriesPresenter: CategoriesPresenter {
     
+    func didInteractorFetchedCategories(categories: [NewsCategory]) {
+        view?.displayCategories(categories: categories)
+    }
 }
