@@ -66,6 +66,10 @@ extension SearchNewsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(news: filterednews[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.GoToWeb(url: news[indexPath.row].url)
+    }
 }
 
 

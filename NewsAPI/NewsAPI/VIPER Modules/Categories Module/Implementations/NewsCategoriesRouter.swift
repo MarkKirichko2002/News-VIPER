@@ -13,8 +13,9 @@ class NewsCategoriesRouter {
     weak var presenter: CategoriesPresenter?
     weak var viewController: UIViewController?
     
-    func GoToCurrentCategory(category: String) {
-        
+    func GoToCurrentCategory(category: NewsCategory) {
+        let vc = CurrentCategoryModule().buildDefault(category: category)
+        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

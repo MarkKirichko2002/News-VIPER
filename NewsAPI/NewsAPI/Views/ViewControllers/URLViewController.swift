@@ -10,16 +10,17 @@ import WebKit
 
 class URLViewController: UIViewController {
 
-    @IBOutlet weak var WVWEBview: WKWebView!
+    var WVWEBview = UIWebView()
    
     var url = "http://www.apple.com"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.addSubview(WVWEBview)
+        WVWEBview.frame = view.bounds
         DispatchQueue.main.async {
-            let request = URLRequest(url: URL(string: "http://www.apple.com")!)
-            self.WVWEBview.load(request)
+            let request = URLRequest(url: URL(string: self.url)!)
+            self.WVWEBview.loadRequest(request)
         }
     }
     

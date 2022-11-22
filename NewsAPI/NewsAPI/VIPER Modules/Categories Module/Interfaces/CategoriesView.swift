@@ -9,5 +9,4 @@ import Foundation
 
 protocol CategoriesView: AnyObject {
     var presenter: CategoriesPresenter?{get set}
-    func displayCategories(categories:[NewsCategory])
 }

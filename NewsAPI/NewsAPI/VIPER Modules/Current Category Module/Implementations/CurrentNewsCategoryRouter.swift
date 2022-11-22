@@ -1,20 +1,19 @@
 //
-//  BreakingNewsRouter.swift
-//  VIPER best practices
+//  CurrentNewsCategoryRouter.swift
+//  NewsAPI
 //
-//  Created by Марк Киричко on 19.11.2022.
+//  Created by Марк Киричко on 21.11.2022.
 //
 
 import Foundation
 import UIKit
 
-class BreakingNewsRouter {
-
-    weak var presenter: TopNewsPresenter?
+class CurrentNewsCategoryRouter {
+    weak var presenter: CurrentCategoryPresenter?
     weak var viewController: UIViewController?
 }
 
-extension BreakingNewsRouter: TopNewsRouter {
+extension CurrentNewsCategoryRouter: CurrentCategoryRouter {
     func GoToWeb(url: String) {
         let vc = URLViewController()
         vc.url = url

@@ -1,33 +1,25 @@
 //
-//  BreakingNewsView.swift
-//  VIPER best practices
+//  CurrentCategoryNewsTableViewController.swift
+//  NewsAPI
 //
-//  Created by Марк Киричко on 19.11.2022.
+//  Created by Марк Киричко on 21.11.2022.
 //
 
 import Foundation
 import UIKit
 
-class BreakingNewsView: UIViewController {
+class CurrentCategoryNewsTableViewController: UIViewController {
     
-    var presenter: TopNewsPresenter?
-    var news = [NewsViewModel]()
+    var presenter: CurrentCategoryPresenter?
+    var category: NewsCategory?
     var tableView = UITableView()
+    var news = [NewsViewModel]()
     var spinner = UIActivityIndicatorView(style: .large)
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        self.title = "Главное"
-        self.tabBarItem.image = UIImage(systemName: "flame")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        self.title = category?.name
+        self.presenter?.reload()
         view.addSubview(tableView)
         tableView.frame = view.bounds
         tableView.delegate = self
@@ -42,7 +34,8 @@ class BreakingNewsView: UIViewController {
     }
 }
 
-extension BreakingNewsView: UITableViewDelegate, UITableViewDataSource {
+extension CurrentCategoryNewsTableViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return news.count
     }
@@ -58,9 +51,9 @@ extension BreakingNewsView: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension BreakingNewsView: TopNewsView {
+extension CurrentCategoryNewsTableViewController: CurrentCategoryView {
     
-    func displayTopNews(news: [NewsViewModel]) {
+    func displayCurrentCategoryNews(news: [NewsViewModel]) {
         DispatchQueue.main.async {
             self.news = news
             self.tableView.reloadData()

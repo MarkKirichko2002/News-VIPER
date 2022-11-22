@@ -10,5 +10,5 @@ import Foundation
 protocol TopNewsRouter {
     
     var presenter: TopNewsPresenter? { get set }
-    
+    func GoToWeb(url: String)
 }
