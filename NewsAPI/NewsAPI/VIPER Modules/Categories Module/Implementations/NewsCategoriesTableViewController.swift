@@ -45,13 +45,12 @@ extension NewsCategoriesTableViewController: UITableViewDelegate, UITableViewDat
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.GoToCurrentCategory(category: categories[indexPath.row])
+    }
 }
 
 extension NewsCategoriesTableViewController: CategoriesView {
-    func displayCategories(categories: [NewsCategory]) {
-        DispatchQueue.main.async {
-            self.categories = categories
-            self.tableView.reloadData()
-        }
-    }
+    
 }

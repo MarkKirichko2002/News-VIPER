@@ -11,5 +11,5 @@ protocol CategoriesPresenter: AnyObject {
     var view: CategoriesView?{get set}
     var interactor: CategoriesInteractor? {get set}
     var router: CategoriesRouter? {get set}
-    func didInteractorFetchedCategories(categories: [NewsCategory])
+    func GoToCurrentCategory(category: NewsCategory)
 }

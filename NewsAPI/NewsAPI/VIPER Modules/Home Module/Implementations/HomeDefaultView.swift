@@ -23,5 +23,4 @@ extension HomeDefaultView: HomeView {
     func display(_ viewControllers: [UIViewController]) {
         self.viewControllers = viewControllers
     }
-    
 }

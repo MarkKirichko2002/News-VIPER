@@ -17,7 +17,7 @@ class SearchNewsInteractor {
 extension SearchNewsInteractor: SearchInteractor {
     
     func GetNews() {
-        apiManager.fetchNews { news in
+        apiManager.fetchNews(url: "https://newsapi.org/v2/top-headlines?country=ru&apiKey=0532857d0c9949ab8d5979e5153377b7") { news in
             self.presenter?.interactorDidFetchedNews(news: news)
         }
     }

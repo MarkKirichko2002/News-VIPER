@@ -12,4 +12,5 @@ protocol TopNewsPresenter: AnyObject {
     var interactor: TopNewsInteractor? { get set }
     var view: TopNewsView? { get set }
     func interactorDidFetchedTopNews(news: [Article])
+    func GoToWeb(url: String)
 }

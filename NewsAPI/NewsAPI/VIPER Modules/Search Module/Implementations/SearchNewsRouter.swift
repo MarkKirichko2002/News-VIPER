@@ -12,8 +12,13 @@ class SearchNewsRouter {
 
     weak var presenter: SearchPresenter?
     weak var viewController: UIViewController?
+
 }
 
 extension SearchNewsRouter: SearchRouter {
-
+    func GoToWeb(url: String) {
+        let vc = URLViewController()
+        vc.url = url
+        viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
 }

@@ -9,5 +9,5 @@ import Foundation
 
 protocol CategoriesRouter {
     var presenter: CategoriesPresenter? {get set}
-    func GoToCurrentCategory(category: String)
+    func GoToCurrentCategory(category: NewsCategory)
 }

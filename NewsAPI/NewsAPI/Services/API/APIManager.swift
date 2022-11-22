@@ -12,7 +12,7 @@ class APIManager {
     
     var url = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=0532857d0c9949ab8d5979e5153377b7"
     
-    func fetchNews(completion: @escaping ([Article])->()) {
+    func fetchNews(url: String, completion: @escaping ([Article])->()) {
         AF.request(url).response { response in
             guard let data = response.data else {return}
             
@@ -29,7 +29,7 @@ class APIManager {
         }
     }
     
-    func fetchCurrentCategory(id: Int) {
+    func CurrentCategory(id: Int)-> String {
         switch id {
             
         case 1:
@@ -49,7 +49,7 @@ class APIManager {
             
         default:
             break
-            
         }
+        return url
     }
 }

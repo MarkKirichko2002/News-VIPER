@@ -12,4 +12,5 @@ protocol SearchPresenter: AnyObject {
     var interactor: SearchInteractor? {get set}
     var router: SearchRouter? {get set}
     func interactorDidFetchedNews(news: [Article])
+    func GoToWeb(url: String)
 }

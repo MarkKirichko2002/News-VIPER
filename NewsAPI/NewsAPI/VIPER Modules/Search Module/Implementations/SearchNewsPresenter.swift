@@ -22,8 +22,12 @@ class SearchNewsPresenter: SearchPresenter {
     func interactorDidFetchedNews(news: [Article]) {
         var newsArray = [NewsViewModel]()
             news.forEach { article in
-                newsArray.append(NewsViewModel(title: article.title, description: article.articleDescription ?? "", image: article.urlToImage ?? ""))
+                newsArray.append(NewsViewModel(title: article.title, description: article.articleDescription ?? "", image: article.urlToImage ?? "", url: article.url))
             view?.displayNews(news: newsArray)
         }
+    }
+    
+    func GoToWeb(url: String) {
+        router?.GoToWeb(url: url)
     }
 }

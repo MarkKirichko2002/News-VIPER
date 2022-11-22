@@ -18,7 +18,7 @@ class NewsCategoriesPresenter {
 
 extension NewsCategoriesPresenter: CategoriesPresenter {
     
-    func didInteractorFetchedCategories(categories: [NewsCategory]) {
-        view?.displayCategories(categories: categories)
+    func GoToCurrentCategory(category: NewsCategory) {
+        router?.GoToCurrentCategory(category: category)
     }
 }
