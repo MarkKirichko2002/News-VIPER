@@ -58,11 +58,9 @@ extension BreakingNewsView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as! NewsTableViewCell
         if !news.isEmpty {
             cell.configure(title: news[indexPath.row].title, image: news[indexPath.row].image)
-        }else {
+        } else {
             cell.configure(title: dbnews[indexPath.row].title ?? "", image: dbnews[indexPath.row].image ?? "")
         }
-        
-        cell.configure(title: dbnews[indexPath.row].title ?? "", image: dbnews[indexPath.row].image ?? "")
         
         return cell
     }
@@ -91,7 +89,6 @@ extension BreakingNewsView: TopNewsView {
             self.count = self.dbnews.count
             self.navigationItem.title = "Главное \(self.count) новостей"
             self.spinner.stopAnimating()
-            print(self.dbnews)
         }
     }
 }
