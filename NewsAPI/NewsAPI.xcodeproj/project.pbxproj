@@ -66,6 +66,8 @@
 		82AE6D61292C1208002DB2EE /* CurrentNewsCategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE6D60292C1208002DB2EE /* CurrentNewsCategoryInteractor.swift */; };
 		82AE6D63292C121B002DB2EE /* CurrentNewsCategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE6D62292C121B002DB2EE /* CurrentNewsCategoryPresenter.swift */; };
 		82AE6D65292C122D002DB2EE /* CurrentNewsCategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE6D64292C122D002DB2EE /* CurrentNewsCategoryRouter.swift */; };
+		82AE6D69292D5905002DB2EE /* NewsDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82AE6D67292D5905002DB2EE /* NewsDB.xcdatamodeld */; };
+		82AE6D6B292D5940002DB2EE /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE6D6A292D5940002DB2EE /* DBManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +130,8 @@
 		82AE6D60292C1208002DB2EE /* CurrentNewsCategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentNewsCategoryInteractor.swift; sourceTree = "<group>"; };
 		82AE6D62292C121B002DB2EE /* CurrentNewsCategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentNewsCategoryPresenter.swift; sourceTree = "<group>"; };
 		82AE6D64292C122D002DB2EE /* CurrentNewsCategoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentNewsCategoryRouter.swift; sourceTree = "<group>"; };
+		82AE6D68292D5905002DB2EE /* NewsDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsDB.xcdatamodel; sourceTree = "<group>"; };
+		82AE6D6A292D5940002DB2EE /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,8 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				827E0E642929711600F203CA /* BreakingNewsView.swift */,
-				827E0E612929711600F203CA /* BreakingNewsInteractor.swift */,
 				827E0E602929711600F203CA /* BreakingNewsPresenter.swift */,
+				827E0E612929711600F203CA /* BreakingNewsInteractor.swift */,
 				827E0E632929711600F203CA /* BreakingNewsRouter.swift */,
 			);
 			path = Implementations;
@@ -404,6 +408,7 @@
 			children = (
 				827E0E1829293FE100F203CA /* API */,
 				82AE6D4D292C05E6002DB2EE /* Image */,
+				82AE6D66292D58E9002DB2EE /* DB */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -454,6 +459,15 @@
 				82AE6D54292C0EFC002DB2EE /* CurrentCategoryModule.swift */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		82AE6D66292D58E9002DB2EE /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				82AE6D67292D5905002DB2EE /* NewsDB.xcdatamodeld */,
+				82AE6D6A292D5940002DB2EE /* DBManager.swift */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,6 +554,7 @@
 				82AE6D47292BE08A002DB2EE /* SearchNewsInteractor.swift in Sources */,
 				827E0E1A29293FF500F203CA /* APIManager.swift in Sources */,
 				827E0E6E2929711600F203CA /* BreakingNewsView.swift in Sources */,
+				82AE6D69292D5905002DB2EE /* NewsDB.xcdatamodeld in Sources */,
 				827E0E3C2929641C00F203CA /* HomeView.swift in Sources */,
 				827E0E362929635D00F203CA /* HomeInteractor.swift in Sources */,
 				82AE6D5F292C1098002DB2EE /* CurrentCategoryNewsTableViewController.swift in Sources */,
@@ -588,6 +603,7 @@
 				82AE6D01292B9319002DB2EE /* NewsCategoriesInteractor.swift in Sources */,
 				827E0E4C29296A9B00F203CA /* News.swift in Sources */,
 				82AE6D65292C122D002DB2EE /* CurrentNewsCategoryRouter.swift in Sources */,
+				82AE6D6B292D5940002DB2EE /* DBManager.swift in Sources */,
 				827E0E3E2929650B00F203CA /* HomeDefaultInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -832,6 +848,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		82AE6D67292D5905002DB2EE /* NewsDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				82AE6D68292D5905002DB2EE /* NewsDB.xcdatamodel */,
+			);
+			currentVersion = 82AE6D68292D5905002DB2EE /* NewsDB.xcdatamodel */;
+			path = NewsDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 827E0DE729293C4E00F203CA /* Project object */;
 }

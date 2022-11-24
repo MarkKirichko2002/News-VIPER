@@ -48,10 +48,10 @@ class NewsTableViewCell: UITableViewCell {
         ArticleTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
     }
     
-    func configure(news: NewsViewModel) {
-        ArticleTitle.text = news.title
+    func configure(title: String, image: String) {
+        ArticleTitle.text = title
         DispatchQueue.main.async {
-            ImageService.getImage(withURL: (URL(string: news.image) ?? URL(string: "https://i.pinimg.com/originals/8a/eb/d8/8aebd875fbddd22bf3971c3a7159bdc7.png"))!, completion: { image in
+            ImageService.getImage(withURL: (URL(string: image) ?? URL(string: "https://i.pinimg.com/originals/8a/eb/d8/8aebd875fbddd22bf3971c3a7159bdc7.png"))!, completion: { image in
                 self.ArticleImage.image = nil
                 self.ArticleImage.image = image
             })

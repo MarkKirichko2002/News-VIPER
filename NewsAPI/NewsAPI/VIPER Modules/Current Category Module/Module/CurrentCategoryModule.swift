@@ -15,7 +15,7 @@ class CurrentCategoryModule {
         let interactor = CurrentNewsCategoryInteractor()
         let presenter = CurrentNewsCategoryPresenter(category: category)
         let router = CurrentNewsCategoryRouter()
-
+        
         view.presenter = presenter
         view.category = category
 

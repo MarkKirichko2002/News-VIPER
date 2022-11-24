@@ -22,7 +22,7 @@ class SearchNewsPresenter: SearchPresenter {
     func interactorDidFetchedNews(news: [Article]) {
         var newsArray = [NewsViewModel]()
             news.forEach { article in
-                newsArray.append(NewsViewModel(title: article.title, description: article.articleDescription ?? "", image: article.urlToImage ?? "", url: article.url))
+                newsArray.append(NewsViewModel(title: article.title, image: article.urlToImage ?? "", url: article.url))
             view?.displayNews(news: newsArray)
         }
     }

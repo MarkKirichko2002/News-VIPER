@@ -10,5 +10,6 @@ import Foundation
 protocol TopNewsView: AnyObject {
     var presenter: TopNewsPresenter? { get set }
     func displayTopNews(news: [NewsViewModel])
+    func displayTopNewsFromDB(news: [NewsDB])
 }
 

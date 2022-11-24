@@ -19,13 +19,22 @@ class BreakingNewsPresenter: TopNewsPresenter {
         }
     }
     
+    func LoadFromDB() {
+        interactor?.GetTopNewsFromDB()
+    }
+    
     func interactorDidFetchedTopNews(news: [Article]) {
         var newsArray = [NewsViewModel]()
-            news.forEach { article in
-                newsArray.append(NewsViewModel(title: article.title, description: article.articleDescription ?? "", image: article.urlToImage ?? "", url: article.url))
+        news.forEach { article in
+            newsArray.append(NewsViewModel(title: article.title, image: article.urlToImage ?? "", url: article.url))
             view?.displayTopNews(news: newsArray)
         }
     }
+    
+    func interactorDidFetchedTopNewsFromDB(news: [NewsDB]) {
+        view?.displayTopNewsFromDB(news: news)
+    }
+    
     
     func GoToWeb(url: String) {
         router?.GoToWeb(url: url)
