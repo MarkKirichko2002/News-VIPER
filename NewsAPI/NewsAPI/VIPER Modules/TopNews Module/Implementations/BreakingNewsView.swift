@@ -12,8 +12,10 @@ class BreakingNewsView: UIViewController {
     
     var presenter: TopNewsPresenter?
     var news = [NewsViewModel]()
+    var dbnews = [NewsDB]()
     var tableView = UITableView()
     var spinner = UIActivityIndicatorView(style: .large)
+    var count = 0
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -27,6 +29,7 @@ class BreakingNewsView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.LoadFromDB()
         view.backgroundColor = .white
         view.addSubview(tableView)
         tableView.frame = view.bounds
@@ -44,12 +47,23 @@ class BreakingNewsView: UIViewController {
 
 extension BreakingNewsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news.count
+        if news.isEmpty {
+            return dbnews.count
+        } else {
+            return news.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as! NewsTableViewCell
-        cell.configure(news: news[indexPath.row])
+        if !news.isEmpty {
+            cell.configure(title: news[indexPath.row].title, image: news[indexPath.row].image)
+        }else {
+            cell.configure(title: dbnews[indexPath.row].title ?? "", image: dbnews[indexPath.row].image ?? "")
+        }
+        
+        cell.configure(title: dbnews[indexPath.row].title ?? "", image: dbnews[indexPath.row].image ?? "")
+        
         return cell
     }
     
@@ -64,7 +78,20 @@ extension BreakingNewsView: TopNewsView {
         DispatchQueue.main.async {
             self.news = news
             self.tableView.reloadData()
+            self.count = self.news.count
+            self.navigationItem.title = "Главное \(self.count) новостей"
             self.spinner.stopAnimating()
+        }
+    }
+    
+    func displayTopNewsFromDB(news: [NewsDB]) {
+        DispatchQueue.main.async {
+            self.dbnews = news
+            self.tableView.reloadData()
+            self.count = self.dbnews.count
+            self.navigationItem.title = "Главное \(self.count) новостей"
+            self.spinner.stopAnimating()
+            print(self.dbnews)
         }
     }
 }

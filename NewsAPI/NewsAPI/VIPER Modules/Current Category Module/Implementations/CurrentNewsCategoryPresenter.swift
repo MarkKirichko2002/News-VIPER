@@ -26,7 +26,7 @@ extension CurrentNewsCategoryPresenter: CurrentCategoryPresenter {
     func reload() {
         interactor?.GetCurrentCategoryNews(category: category!, completion: { news in
             news.forEach { article in
-                self.newsArray.append(NewsViewModel(title: article.title, description: article.articleDescription ?? "", image: article.urlToImage ?? "", url: article.url))
+                self.newsArray.append(NewsViewModel(title: article.title, image: article.urlToImage ?? "", url: article.url))
                 self.view?.displayCurrentCategoryNews(news: self.newsArray)
             }
         })
