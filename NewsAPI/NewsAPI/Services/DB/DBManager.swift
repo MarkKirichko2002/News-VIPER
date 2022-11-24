@@ -26,6 +26,12 @@ class DBManager {
                         }
                     }
                 }
+                
+                self.LoadNews { articles in
+                    print(articles.count)
+                    completion(articles)
+                }
+                
             } else {
                 self.LoadNews { articles in
                     print(articles.count)
