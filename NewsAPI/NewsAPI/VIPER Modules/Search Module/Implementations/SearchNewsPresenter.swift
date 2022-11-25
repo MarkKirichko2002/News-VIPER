@@ -11,7 +11,7 @@ class SearchNewsPresenter: SearchPresenter {
     
     var router: SearchRouter?
     
-    var view: SearchView?
+    weak var view: SearchView?
     
     var interactor: SearchInteractor? {
         didSet {
