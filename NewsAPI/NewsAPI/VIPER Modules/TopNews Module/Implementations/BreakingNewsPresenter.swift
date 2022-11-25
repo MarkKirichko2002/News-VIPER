@@ -11,7 +11,7 @@ class BreakingNewsPresenter: TopNewsPresenter {
     
     var router: TopNewsRouter?
     
-    var view: TopNewsView?
+    weak var view: TopNewsView?
     
     var interactor: TopNewsInteractor? {
         didSet {

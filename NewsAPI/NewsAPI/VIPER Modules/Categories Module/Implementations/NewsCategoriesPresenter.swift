@@ -11,7 +11,7 @@ class NewsCategoriesPresenter {
     
     var router: CategoriesRouter?
     
-    var view: CategoriesView?
+    weak var view: CategoriesView?
        
     var interactor: CategoriesInteractor? 
 }

@@ -9,7 +9,7 @@ import Foundation
 
 class CurrentNewsCategoryPresenter {
     
-    var view: CurrentCategoryView?
+    weak var view: CurrentCategoryView?
     var interactor: CurrentCategoryInteractor?
     var router: CurrentCategoryRouter?
     let category: NewsCategory?
