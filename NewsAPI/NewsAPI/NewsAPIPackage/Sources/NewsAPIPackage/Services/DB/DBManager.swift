@@ -17,7 +17,7 @@ class DBManager {
     
     func LoadData(completion: @escaping([NewsDB])->()) {
         LoadNews { news in
-            if news.count > 20 {
+            if news.count > 20 || news.count < 20 {
                 self.DeleteNews(news: news)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
