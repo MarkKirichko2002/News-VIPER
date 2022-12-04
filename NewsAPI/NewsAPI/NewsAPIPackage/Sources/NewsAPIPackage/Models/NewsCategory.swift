@@ -10,4 +10,5 @@ import Foundation
 struct NewsCategory {
     let id: Int
     let name: String
+    let sound: String
 }

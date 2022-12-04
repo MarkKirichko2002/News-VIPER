@@ -13,12 +13,12 @@ let package = Package(
     ],
     dependencies: [],
     targets: [
-        
         .target(
             name: "NewsAPIPackage",
             dependencies: [],
             resources: [
-                .copy("Services/DB/NewsDB.xcdatamodel")
+                .copy("Services/DB/NewsDB.xcdatamodel"),
+                .process("sounds")
             ]),
         .testTarget(
             name: "NewsAPIPackageTests",
