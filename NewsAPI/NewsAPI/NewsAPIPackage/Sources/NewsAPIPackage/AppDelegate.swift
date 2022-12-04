@@ -13,7 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let managedObjectModel = NSManagedObjectModel(contentsOf: Bundle.module.url(forResource: "NewsDB", withExtension: "momd")!)
-   
+ 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
     }

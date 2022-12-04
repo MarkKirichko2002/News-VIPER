@@ -13,7 +13,7 @@ class NewsCategoriesTableViewController: UIViewController {
     
     var tableView = UITableView()
     var presenter: CategoriesPresenter?
-    var categories = [NewsCategory(id: 1, name: "главное"),NewsCategory(id: 2, name: "технологии"),NewsCategory(id: 3, name: "спорт"),NewsCategory(id: 4, name: "бизнес"), NewsCategory(id: 5, name: "развлечения")]
+    var categories = [NewsCategory(id: 1, name: "главное", sound: "newspaper.mp3"),NewsCategory(id: 2, name: "технологии", sound: "technology.wav"),NewsCategory(id: 3, name: "спорт", sound: "sport.mp3"),NewsCategory(id: 4, name: "бизнес", sound: "business.mp3"), NewsCategory(id: 5, name: "развлечения", sound: "entertainment.mp3")]
     
     init() {
         super.init(nibName: nil, bundle: nil)

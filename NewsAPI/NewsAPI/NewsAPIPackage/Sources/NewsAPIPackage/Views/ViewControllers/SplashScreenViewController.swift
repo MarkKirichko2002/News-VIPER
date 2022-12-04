@@ -15,6 +15,7 @@ public class SplashScreenViewController: UIViewController {
     var Image = UIImageView()
     var Text = UILabel()
     var animation = AnimationClass()
+    var player = SoundClass()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +55,9 @@ public class SplashScreenViewController: UIViewController {
     func SplashScreen() {
         
         animation.springImage(image: Image)
-        
+               
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.player.PlaySound(resource: "newspaper.mp3")
             self.Text.text = "Новости 2022"
             self.animation.springLabel(label: self.Text)
         }

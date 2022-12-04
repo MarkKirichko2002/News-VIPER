@@ -13,12 +13,16 @@ class NewsCategoriesPresenter {
     
     weak var view: CategoriesView?
        
-    var interactor: CategoriesInteractor? 
+    var interactor: CategoriesInteractor?
+    
+    var player = SoundClass()
+    
 }
 
 extension NewsCategoriesPresenter: CategoriesPresenter {
     
     func GoToCurrentCategory(category: NewsCategory) {
+        player.PlaySound(resource: category.sound)
         router?.GoToCurrentCategory(category: category)
     }
 }
