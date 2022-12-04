@@ -25,11 +25,11 @@ public class SplashScreenViewController: UIViewController {
     }
     
     func setupView() {
-        Image.image = UIImage(systemName: "newspaper")
+        Image.image = SCImage(named: "news")
         Image.tintColor = .black
         self.view.addSubview(Image)
         Text.textAlignment = .center
-        Text.font = UIFont(name: "Avenir-medium", size: 25)
+        Text.font = UIFont(name: "Avenir-medium", size: 23)
         self.view.addSubview(Text)
     }
     
