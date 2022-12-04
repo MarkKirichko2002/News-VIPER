@@ -42,6 +42,6 @@ class AnimationClass {
         animation.beginTime = CACurrentMediaTime() + 0
         image.layer.add(animation, forKey: nil)
     }
-
+    
 }
 

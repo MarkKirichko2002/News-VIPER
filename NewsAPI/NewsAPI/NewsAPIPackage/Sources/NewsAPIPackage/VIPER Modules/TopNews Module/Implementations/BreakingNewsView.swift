@@ -68,7 +68,12 @@ extension BreakingNewsView: UITableViewDelegate, UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.GoToWeb(url: news[indexPath.row].url)
+        if let cell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell {
+               cell.didSelect(indexPath: indexPath)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.presenter?.GoToWeb(url: self.news[indexPath.row].url)
+        }
     }
 }
 
