@@ -16,6 +16,7 @@ public class BreakingNewsView: UIViewController {
     var dbnews = [NewsDB]()
     var tableView = UITableView()
     var spinner = UIActivityIndicatorView(style: .large)
+    let refreshControl = UIRefreshControl()
     var count = 0
     
     public init() {
@@ -30,6 +31,8 @@ public class BreakingNewsView: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         presenter?.LoadFromDB()
         view.backgroundColor = .white
         view.addSubview(tableView)
@@ -43,6 +46,14 @@ public class BreakingNewsView: UIViewController {
         view.addSubview(spinner)
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        DispatchQueue.main.async {
+            self.presenter?.interactor?.GetTopNews()
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 

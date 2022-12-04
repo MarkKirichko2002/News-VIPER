@@ -22,9 +22,6 @@ extension BreakingNewsInteractor: TopNewsInteractor {
     func GetTopNews() {
         apiManager.fetchNews(url: "https://newsapi.org/v2/top-headlines?country=ru&apiKey=c6fb14909d524ae68ea631e5cb55ae67") { news in
             self.presenter?.interactorDidFetchedTopNews(news: news)
-//            for i in news {
-//                self.dbManager.SaveNews(news: i)
-//            }
         }
     }
     

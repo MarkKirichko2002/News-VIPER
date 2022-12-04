@@ -16,9 +16,12 @@ class CurrentCategoryNewsTableViewController: UIViewController {
     var tableView = UITableView()
     var news = [NewsViewModel]()
     var spinner = UIActivityIndicatorView(style: .large)
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         self.title = category?.name
         self.presenter?.reload()
         view.addSubview(tableView)
@@ -32,6 +35,14 @@ class CurrentCategoryNewsTableViewController: UIViewController {
         view.addSubview(spinner)
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        DispatchQueue.main.async {
+            self.presenter?.reload()
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 
