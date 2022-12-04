@@ -16,6 +16,7 @@ class SearchNewsViewController: UIViewController, UISearchControllerDelegate {
     var filterednews = [NewsViewModel]()
     var tableView = UITableView()
     var spinner = UIActivityIndicatorView(style: .large)
+    let refreshControl = UIRefreshControl()
     lazy var searchBar:UISearchBar = UISearchBar()
     
     init() {
@@ -30,6 +31,8 @@ class SearchNewsViewController: UIViewController, UISearchControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         filterednews = news
         searchBar.searchBarStyle = UISearchBar.Style.default
         searchBar.placeholder = "Поиск..."
@@ -53,6 +56,14 @@ class SearchNewsViewController: UIViewController, UISearchControllerDelegate {
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         spinner.removeFromSuperview()
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        DispatchQueue.main.async {
+            self.presenter?.interactor?.GetNews()
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 
