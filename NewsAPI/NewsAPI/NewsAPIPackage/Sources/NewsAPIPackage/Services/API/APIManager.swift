@@ -12,6 +12,8 @@ class APIManager {
     
     var url = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=0532857d0c9949ab8d5979e5153377b7"
     
+    var urls = ["https://newsapi.org/v2/top-headlines?country=ru&apiKey=0532857d0c9949ab8d5979e5153377b7", "https://newsapi.org/v2/top-headlines?country=ru&category=technology&apiKey=0532857d0c9949ab8d5979e5153377b7", "https://newsapi.org/v2/top-headlines?country=ru&category=sport&apiKey=0532857d0c9949ab8d5979e5153377b7", "https://newsapi.org/v2/top-headlines?country=ru&category=business&apiKey=0532857d0c9949ab8d5979e5153377b7", "https://newsapi.org/v2/top-headlines?country=ru&category=entertainment&apiKey=0532857d0c9949ab8d5979e5153377b7"]
+    
     func fetchNews(url: String, completion: @escaping ([Article])->()) {
         AF.request(url).response { response in
             guard let data = response.data else {return}
@@ -47,8 +49,25 @@ class APIManager {
         case 5:
             url = "https://newsapi.org/v2/top-headlines?country=ru&category=entertainment&apiKey=0532857d0c9949ab8d5979e5153377b7"
             
+        case 6:
+            url = GenerateRandomUrl()
+            
         default:
             break
+        }
+        return url
+    }
+    
+    func GenerateRandomUrl()->String {
+        while urls.count > 0 {
+
+            let arrayKey = Int(arc4random_uniform(UInt32(urls.count)))
+
+            let randURL = urls[arrayKey]
+
+            urls.swapAt(arrayKey, urls.count-1)
+            urls.removeLast()
+            url = randURL
         }
         return url
     }
