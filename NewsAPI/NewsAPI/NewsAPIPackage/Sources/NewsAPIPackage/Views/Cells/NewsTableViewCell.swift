@@ -11,6 +11,8 @@ class NewsTableViewCell: UITableViewCell {
     
     static let identifier = "NewsTableViewCell"
     
+    var animation = AnimationClass()
+    
     var ArticleImage = UIImageView()
     let ArticleTitle: UILabel = {
         let label = UILabel()
@@ -21,8 +23,7 @@ class NewsTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         return label
     }()
-    var ArticleDescription = UILabel()
-    
+   
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -56,6 +57,11 @@ class NewsTableViewCell: UITableViewCell {
                 self.ArticleImage.image = image
             })
         }
+    }
+    
+    func didSelect(indexPath: IndexPath) {
+        animation.springImage(image: ArticleImage)
+        animation.springLabel(label: ArticleTitle)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
