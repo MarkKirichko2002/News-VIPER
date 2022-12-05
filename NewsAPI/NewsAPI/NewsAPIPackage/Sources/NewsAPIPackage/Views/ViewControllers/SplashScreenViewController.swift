@@ -30,7 +30,7 @@ public class SplashScreenViewController: UIViewController {
         Image.tintColor = .black
         self.view.addSubview(Image)
         Text.textAlignment = .center
-        Text.font = UIFont(name: "Avenir-medium", size: 23)
+        Text.font = UIFont(name: "Avenir-medium", size: 25)
         self.view.addSubview(Text)
     }
     

@@ -10,4 +10,5 @@ import Foundation
 protocol SearchInteractor {
     var presenter: SearchPresenter? {get set}
     func GetNews()
+    func GetCurrentVoiceCategoryNews(category: String, completion: @escaping([Article])->())
 }
