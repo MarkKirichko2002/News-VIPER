@@ -15,4 +15,5 @@ protocol TopNewsPresenter: AnyObject {
     func interactorDidFetchedTopNewsFromDB(news: [NewsDB])
     func LoadFromDB() 
     func GoToWeb(url: String)
+    
 }

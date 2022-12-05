@@ -29,8 +29,21 @@ class SearchNewsViewController: UIViewController, UISearchControllerDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func MicrophoneOn() {
+        presenter?.isStart = !presenter!.isStart
+        if presenter!.isStart {
+            presenter?.MicrophoneButtonWasClicked()
+        } else {
+            presenter?.stopSpeechRecognition()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let mic = UIBarButtonItem(image: UIImage(systemName: "mic"), style: .plain, target: self, action: #selector(MicrophoneOn))
+        mic.tintColor = .black
+        presenter?.barButtonItem = mic
+        navigationItem.rightBarButtonItems = [mic]
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
         filterednews = news

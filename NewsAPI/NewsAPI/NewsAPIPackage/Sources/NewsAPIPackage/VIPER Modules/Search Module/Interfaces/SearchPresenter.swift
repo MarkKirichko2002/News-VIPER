@@ -6,11 +6,18 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SearchPresenter: AnyObject {
     var view: SearchView? {get set}
     var interactor: SearchInteractor? {get set}
     var router: SearchRouter? {get set}
+    var isStart: Bool {get set}
+    var barButtonItem: UIBarButtonItem? {get set}
     func interactorDidFetchedNews(news: [Article])
+    func MicrophoneButtonWasClicked()
+    func StartSpeechRecognition()
+    func stopSpeechRecognition()
     func GoToWeb(url: String)
+    func reload()
 }
