@@ -18,6 +18,14 @@ class SearchNewsInteractor {
 
 extension SearchNewsInteractor: SearchInteractor {
     
+    func GenerateRandomNews() {
+        url = apiManager.GenerateRandomUrl()
+        print("URL \(url)")
+        apiManager.fetchNews(url: self.url) { news in
+            self.presenter?.interactorDidFetchedRandomNews(news: news)
+        }
+    }
+    
     func GetCurrentVoiceCategoryNews(category: String, completion: @escaping([Article])->()) {
         url = apiManager.RecognizeCurrentCategory(category: category)
         apiManager.fetchNews(url: url) { articles in

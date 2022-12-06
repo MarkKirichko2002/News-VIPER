@@ -15,7 +15,9 @@ protocol SearchPresenter: AnyObject {
     var isStart: Bool {get set}
     var barButtonItem: UIBarButtonItem? {get set}
     func interactorDidFetchedNews(news: [Article])
+    func interactorDidFetchedRandomNews(news: [Article])
     func MicrophoneButtonWasClicked()
+    func DiceButtonWasClicked()
     func StartSpeechRecognition()
     func stopSpeechRecognition()
     func GoToWeb(url: String)

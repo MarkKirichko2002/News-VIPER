@@ -10,4 +10,5 @@ import Foundation
 protocol SearchView: AnyObject {
     var presenter: SearchPresenter? {get set}
     func displayNews(news:[NewsViewModel])
+    func displayRandomNews(news: [NewsViewModel])
 }
