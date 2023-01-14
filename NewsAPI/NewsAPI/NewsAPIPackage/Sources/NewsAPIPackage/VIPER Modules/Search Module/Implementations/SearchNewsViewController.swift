@@ -18,7 +18,6 @@ class SearchNewsViewController: UIViewController, UISearchControllerDelegate {
     var spinner = UIActivityIndicatorView(style: .large)
     let refreshControl = UIRefreshControl()
     lazy var searchBar:UISearchBar = UISearchBar()
-    var player = SoundClass()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -39,19 +38,12 @@ class SearchNewsViewController: UIViewController, UISearchControllerDelegate {
         }
     }
     
-    @objc func GenerateRandomNews() {
-        player.PlaySound(resource: "dice.wav")
-        presenter?.DiceButtonWasClicked()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let mic = UIBarButtonItem(image: UIImage(systemName: "mic"), style: .plain, target: self, action: #selector(MicrophoneOn))
-        let dice = UIBarButtonItem(image: UIImage(systemName: "dice"), style: .plain, target: self, action: #selector(GenerateRandomNews))
         mic.tintColor = .black
-        dice.tintColor = .black
         presenter?.barButtonItem = mic
-        navigationItem.rightBarButtonItems = [dice,mic]
+        navigationItem.rightBarButtonItems = [mic]
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
         filterednews = news
@@ -118,13 +110,6 @@ extension SearchNewsViewController: SearchView {
             self.news = news
             self.tableView.reloadData()
             self.spinner.stopAnimating()
-        }
-    }
-    
-    func displayRandomNews(news: [NewsViewModel]) {
-        DispatchQueue.main.async {
-            self.news = news
-            self.tableView.reloadData()
         }
     }
 }

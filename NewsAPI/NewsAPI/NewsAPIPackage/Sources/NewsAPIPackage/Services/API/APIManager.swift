@@ -100,8 +100,6 @@ class APIManager {
             urls.swapAt(arrayKey, urls.count-1)
             urls.removeLast()
             url = randURL
-            
-            print(url)
         }
         return url
     }

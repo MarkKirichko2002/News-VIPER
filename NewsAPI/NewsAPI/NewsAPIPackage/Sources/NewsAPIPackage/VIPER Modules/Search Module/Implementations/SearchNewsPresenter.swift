@@ -23,7 +23,7 @@ class SearchNewsPresenter: SearchPresenter {
     var word = "главное"
     var newsArray = [NewsViewModel]()
     var barButtonItem: UIBarButtonItem?
-    
+
     var interactor: SearchInteractor? {
         didSet {
             interactor?.GetNews()
@@ -35,24 +35,11 @@ class SearchNewsPresenter: SearchPresenter {
         self.StartSpeechRecognition()
     }
     
-    func DiceButtonWasClicked() {
-        self.interactor?.GenerateRandomNews()
-    }
-    
     func interactorDidFetchedNews(news: [Article]) {
+        var newsArray = [NewsViewModel]()
         news.forEach { article in
             newsArray.append(NewsViewModel(title: article.title, image: article.urlToImage ?? "", url: article.url))
             view?.displayNews(news: newsArray)
-        }
-    }
-    
-    func interactorDidFetchedRandomNews(news: [Article]) {
-        news.forEach { article in
-            self.newsArray.removeAll()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.newsArray.append(NewsViewModel(title: article.title, image: article.urlToImage ?? "", url: article.url))
-                self.view?.displayRandomNews(news: self.newsArray)
-            }
         }
     }
     
